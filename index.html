@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="pokemon">
+
+  <head>
+    <link data-require="bootstrap-css@2.3.2" data-semver="2.3.2" rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+    <script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+
+  <body ng-controller="PokeController">
+
+    <h1>Pokemones</h1>
+
+    <div class="container">
+
+    
+
+    <div class="lista">      
+    
+
+    <input type="text" ng-model="nameFilter" placeholder="Search..."/>
+
+      <table >
+        <thead>
+          <tr>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="p in filtered | filter: nameFilter">
+          <td>{{ p.name }}</td>
+          <td> <a href="#!details/{{p.name}}"> Details </a> </td>
+        </tr>
+      </tbody>
+      </table>  
+    
+
+    <div data-pagination="" data-num-pages="numPages()" 
+      data-current-page="currentPage" data-max-size="maxSize"  
+      data-boundary-links="true"></div>
+
+    </div>
+
+      <div class="detalle" ng-view>
+
+
+
+
+
+      </div>
+
+      <div class="resumen">
+        Summary
+
+        <div ng-repeat="(key, value) in summaryFirstLetter" style="display: inline;"> 
+          <span >{{key}}:{{value}} - </span>
+        </div>
+
+      </div>
+
+    </div>
+
+    </body>
+
+</html>
